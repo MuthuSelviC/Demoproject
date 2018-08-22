@@ -1,0 +1,72 @@
+<div class="container">
+
+  <form (ngSubmit) = "onSubmit()" #s ="ngForm">
+      <div id="user-data" 
+      ngModelGroup = "userData"
+      #userData = "ngModelGroup">
+    <div class = "form-group">
+      <strong>
+      <label for ="email"> Email</label></strong>
+      <input 
+        type = "email"
+        class = "form-control"
+        name = "email"
+        pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+        required
+        ngModel
+        #email ="ngModel"
+         >
+        <span *ngIf ="!email.valid && email.touched && !email.pattern"> Please enter a valid email</span>
+        </div>
+        <div class = "form-group">
+          <strong>
+        <label for ="password"> Password</label></strong>
+        
+      <input 
+        type = "password"
+        name = "password"
+        class = "form-control"
+        maxlength="8"
+        ngModel
+        required
+        pattern="^(?=[^\d_].*?\d)\w(\w|[!@#$%])"
+        #password ="ngModel">
+        <p class="help-block">Password must be 8 character long with at least one character and one special character</p>
+        <span *ngIf ="!password.valid && password.touched && !password.pattern"> Please enter password
+          <!-- <ng-template #ref [ngIf] = "password.pattern">
+          
+            must be 8 character long with at least one character and one special character
+            </ng-template> -->
+        </span>
+    
+       </div>
+       </div>
+       <div class="form-group">
+         <strong>
+          <label for="secret">Choose anyone</label></strong>
+          <select id="secret"
+           class="form-control"
+           [ngModel] = 'question'
+           name="secrect">
+            <option value="basic">Basic</option>
+            <option value="advanced">Advanced</option>
+            <option value="pro">Pro</option>
+          </select>
+        </div>
+       <p *ngIf = "!userData.valid && userData.touched"> Please enter user data</p>
+        <button class="btn btn-primary" type="submit" >Submit</button> 
+      </form>
+      <br/>
+      <button class="btn btn-primary" (click)="ShowAlert()">Clear</button>
+    </div>
+        <div class ='row' *ngIf='submitted' >
+          <div class ='col-xs-12'>
+            <h3> Email : {{detail.email}}</h3>
+            <h3> Password : {{detail.password}}</h3>
+            <h3>  : {{detail.secrect}}</h3>
+          </div>
+        </div>
+      
+        
+   
+  

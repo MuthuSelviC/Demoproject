@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
-import { User } from './user';
+import { Observable, Subject, Observer } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormserviceService {
-
+data ;
   constructor() {
     
    }
-    createUser(user: User) {
-      console.log('Email ' + user.email1);
-      console.log('Password ' + user.password1);
+    createUser(user) {
+       this.data =user;
+      console.log(this.data);
+  }
+  getUser() {
+    console.log(this.data);
+    return this.data;
+    
   }
 }

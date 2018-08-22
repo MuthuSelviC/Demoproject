@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormserviceService } from '../formservice.service';
 
 @Component({
   selector: 'app-display',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./display.component.css']
 })
 export class DisplayComponent implements OnInit {
-
-  constructor() { }
+d ;
+obj;
+  constructor(private formservice:FormserviceService) { }
 
   ngOnInit() {
-  }
-
+    this.d =this.formservice.getUser();
+    console.log(this.d);
+    this.obj ={
+     email :this.d.email,
+    paswd:this.d.pwd,
+    drop:this.d.drop
+    }
+}
 }

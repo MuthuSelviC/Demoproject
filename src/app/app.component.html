@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 
 <form (ngSubmit) = "onSubmit()" #s ="ngForm">
     <div id="user-data" 
@@ -23,9 +23,14 @@
       class = "form-control"
       ngModel
       required
-      maxlength="8"
+      pattern="^(?=[^\d_].*?\d)\w(\w|[!@#$%]){7,20}"
       #password ="ngModel">
-      <span *ngIf ="!password.valid && password.touched && !password.maxlength"> Please enter password</span>
+      <span *ngIf ="!password.valid && password.touched && !password.pattern"> Please enter password
+        <<ng-template #ref [ngIf] = "password.pattern">
+        
+          must be 8 character long with at least one character and one special character
+          </ng-template> -->
+      <!-- </span>
   
      </div>
      </div>
@@ -54,4 +59,7 @@
           <h3>  : {{detail.secrect}}</h3>
         </div>
       </div>
- 
+      <router-outlet></router-outlet>
+      
+  --> 
+<router-outlet></router-outlet>
